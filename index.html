@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header>
+    <div class="header-left">
+      <div class="logo-mark">SP</div>
+      <div>
+        <h1>Study Planner</h1>
+        <p class="header-sub" id="dateDisplay"></p>
+      </div>
+    </div>
+    <button id="darkModeBtn" class="mode-toggle" aria-label="Toggle dark mode">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
+  </header>
+
+  <main class="container">
+
+    <div class="layout-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
+
+        <!-- FORM -->
+        <section class="card task-form-section">
+          <h2 class="section-title">
+            <span class="title-accent">+</span> New Task
+          </h2>
+
+          <form id="taskForm">
+            <div class="field">
+              <label for="taskTitle">Task</label>
+              <input type="text" id="taskTitle" placeholder="e.g. Chapter 4 notes" required />
+            </div>
+            <div class="field">
+              <label for="taskModule">Module</label>
+              <input type="text" id="taskModule" placeholder="e.g. Biology, Maths" required />
+            </div>
+            <div class="field">
+              <label for="taskDeadline">Deadline</label>
+              <input type="date" id="taskDeadline" required />
+            </div>
+            <div class="field">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority">
+                <option value="Low">🟢 Low</option>
+                <option value="Medium">🟡 Medium</option>
+                <option value="High">🔴 High</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-add">Add Task</button>
+          </form>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="card progress-section">
+          <h2 class="section-title">Progress</h2>
+          <div class="progress-ring-wrap">
+            <svg class="progress-ring" viewBox="0 0 100 100">
+              <circle class="ring-bg" cx="50" cy="50" r="40"/>
+              <circle class="ring-fill" id="ringFill" cx="50" cy="50" r="40"
+                stroke-dasharray="251.2"
+                stroke-dashoffset="251.2"/>
+            </svg>
+            <div class="progress-center">
+              <span id="progressPercent">0%</span>
+              <small>done</small>
+            </div>
+          </div>
+          <p id="progressText" class="progress-label">No tasks yet</p>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-col">
+
+        <!-- ACTIVE TASKS -->
+        <section class="card tasks-section">
+          <h2 class="section-title">Current Tasks <span id="activeCount" class="badge">0</span></h2>
+          <div id="taskList" class="task-list">
+            <p class="empty-state">Nothing due yet — add a task to get started.</p>
+          </div>
+        </section>
+
+        <!-- COMPLETED -->
+        <section class="card completed-section">
+          <h2 class="section-title">Completed <span id="completedCount" class="badge badge-done">0</span></h2>
+          <div id="completedTasks" class="task-list">
+            <p class="empty-state">Tasks you finish will appear here.</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
